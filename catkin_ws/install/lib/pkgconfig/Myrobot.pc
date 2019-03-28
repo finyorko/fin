@@ -1,0 +1,8 @@
+prefix=/home/finyorko/catkin_ws/install
+
+Name: Myrobot
+Description: Description of Myrobot
+Version: 0.0.0
+Cflags: 
+Libs: -L/home/finyorko/catkin_ws/install/lib 
+Requires: 
