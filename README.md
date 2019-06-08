@@ -1,4 +1,4 @@
-## Report of Robot Software Engineering 
+# Report of Robot Software Engineering 
 
 
 
@@ -8,7 +8,7 @@
 
 ​    I am responsible for the voice part of the robot. What I want to realize is that the robot can communicate with the customer, and recognize the commands which the customer give. He should know the needs of the customer and then execute, and then use the other modules to achieve the overall function.
 
-##### The process of robotic action:
+### The process of robotic action:
 
 - When the robot recognizes the customer's beckoning action, he would say “Yes, I’m coming.” Then he would navigate to the customer.
 
@@ -57,7 +57,7 @@ class IncrementalPID:
 
 - Then the robot would band what he is catching to the customer and say “Here is your …. Enjoy yourself.”
 
-##### The Implementation of the voice part:
+### The Implementation of the voice part:
 
 Define a talk function in main.py:
 
@@ -82,7 +82,7 @@ while not rospy.is_shutdown():
 				talk("OK. I'll bring you a cup of coffee")
 				#talk("好的，我去给您拿一杯咖啡")
 				rospy.wait_for_message('speak_finish', String)
-				break
+				break 
 			elif '茶' in feed_back or 'tea' in feed_back:
 				print('tea')
 				drink = 'tea'
@@ -140,10 +140,6 @@ if __name__ == '__main__':
 
 ​     
 
-
-
-
-
 ​       First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
 
 ​      `   talk (“Yes, I’m coming.”)`
@@ -156,6 +152,6 @@ if __name__ == '__main__':
 
 `talk ('Here is your' + drink + '. Enjoy yourself.')`
 
-##### Summary and outlook:
+### Summary and outlook:
 
    In this assignment, our final robot has generally met our initial expectations. My task in my group is relatively simple. So, I paid some attention to the visual and mechanical arm parts. I have some thoughts on the robotic arm and the visual aspect, though some of my ideas were replaced by some better ways. But I think that I grew up in this assignment. I understood a lot of knowledge about robots and I recognized many methods. I hope that in the future I can learn more about robots. At last, thank you teacher for your care during this semester. You helped me learn a lot of knowledge about robots. Thank you very much.
