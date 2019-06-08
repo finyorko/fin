@@ -8,11 +8,11 @@
 
 ​I am responsible for the voice part of the robot. What I want to realize is that the robot can communicate with the customer, and recognize the commands which the customer give. He should know the needs of the customer and then execute, and then use the other modules to achieve the overall function.
 
-### The process of robotic action:
+## The process of robotic action:
 
 - When the robot recognizes the customer's beckoning action, he would say “Yes, I’m coming.” Then he would navigate to the customer.
 
-​In this section, our group use Baidu API to identify the posture of the customer’s body. When the robot did it, we would publish a message of “Yes, I’m coming.” to the topic “speech” and the robot would say this sentence. And then Then he would navigate to the customer. But the delay of the Baidu API is long, we can only receive the position of the previous second. So, he walked a little shaking. There was an idea that we only use the Baidu API for recognizing the posture of the customer’s body and the use dlib or some other packages to track the customer’s body. But he's still not running smoothly. And now this problem has not been solved well. 
+​In this section, our group use Baidu API to identify the posture of the customer’s body. When the robot did it, we would publish a message of “Yes, I’m coming.” to the topic `speech` and the robot would say this sentence. And then Then he would navigate to the customer. But the delay of the Baidu API is long, we can only receive the position of the previous second. So, he walked a little shaking. There was an idea that we only use the Baidu API for recognizing the posture of the customer’s body and the use dlib or some other packages to track the customer’s body. But he's still not running smoothly. And now this problem has not been solved well. 
 
 - When he arrived at the customer, he would ask the customer “Hello! What do you want to drink, coffee or tea?”
 
@@ -57,9 +57,9 @@ class IncrementalPID:
 
 - Then the robot would band what he is catching to the customer and say “Here is your …. Enjoy yourself.”
 
-### The Implementation of the voice part:
+## The Implementation of the voice interaction:
 
-Define a talk function in main.py:
+Define a talk function in `main.py`:
 
 ```
 def talk(text):
@@ -96,7 +96,7 @@ while not rospy.is_shutdown():
 				rospy.wait_for_message('speak_finish', String)
 	print('finish!')
 ```
-Then modify say.py :
+Then modify `say.py` :
 
 ```python
 import rospy
@@ -143,14 +143,14 @@ if __name__ == '__main__':
 
 ​      `   talk (“Yes, I’m coming.”)`
 
-​Second, when it receives the message of “finding_finish”, it would execute
+​Second, when it receives the message of `finding_finish`, it would execute
 
-​      `   talk ("Hello! What would you like to have? Coffee or tea?")`
+​      `talk ("Hello! What would you like to have? Coffee or tea?")`
 
-​Third, when it receives the message of “navi_finish”, it would execute
+​Third, when it receives the message of `navi_finish`, it would execute
 
 `talk ('Here is your' + drink + '. Enjoy yourself.')`
 
-### Summary and outlook:
+## Summary and outlook:
 
 In this assignment, our final robot has generally met our initial expectations. My task in my group is relatively simple. So, I paid some attention to the visual and mechanical arm parts. I have some thoughts on the robotic arm and the visual aspect, though some of my ideas were replaced by some better ways. But I think that I grew up in this assignment. I understood a lot of knowledge about robots and I recognized many methods. I hope that in the future I can learn more about robots. At last, thank you teacher for your care during this semester. You helped me learn a lot of knowledge about robots. Thank you very much.
