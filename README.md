@@ -1,4 +1,4 @@
-#Report of Robot Software Engineering 
+>Report of Robot Software Engineering 
   Our group prepares to make a smart bartender robot based on the Restaurant part of the Robocup 2019 rule. The goal is to complete the voice command giving by someone and go to the target location. Then the robot uses his robotic arm to grasp a cup of coffee or tea and navigate back to the start location autonomously. And then the robot should hand what he is catching to the customer.
   Our innovation is: When the robot recognizes the customer's beckoning action, he uses the voice to actively ask the customer's needs and communicate with the customer to meet the customer's needs.
   I am responsible for the voice part of the robot. What I want to realize is that the robot can communicate with the customer, and recognize the commands which the customer give. He should know the needs of the customer and then execute, and then use the other modules to achieve the overall function.
