@@ -26,7 +26,7 @@
 
 ​       In this section, I came up with an idea that we can use PID Controller to adjust the position of the end of the arm to grasp the coffee or tea. And I wrote an algorithm for a PID controller. I want the robot to go to the same position near the bar every time. Then we could use the PID controller to control x, y, z respectively. And what we need to control is the angles (The formula about coordinate and angles is known).But there are a better way to let the robot arm grasp more accurately. The method is that we can use navigation to let the robot be the same distance from the bottle every time and then grasp the bottle.
 
-```
+```python
 class IncrementalPID:
     def __init__(self, P, I, D):
         self.Kp = P
