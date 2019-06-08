@@ -1,22 +1,24 @@
 # Report of Robot Software Engineering 
 
+> Name: Feng Yukang
+>
+> Student Number: 1611412
 
+Our group prepares to make a smart bartender robot based on the Restaurant part of the Robocup 2019 rule. The goal is to complete the voice command giving by someone and go to the target location. Then the robot uses his robotic arm to grasp a cup of coffee or tea and navigate back to the start location autonomously. And then the robot should hand what he is catching to the customer.
 
-​Our group prepares to make a smart bartender robot based on the Restaurant part of the Robocup 2019 rule. The goal is to complete the voice command giving by someone and go to the target location. Then the robot uses his robotic arm to grasp a cup of coffee or tea and navigate back to the start location autonomously. And then the robot should hand what he is catching to the customer.
+Our innovation is: When the robot recognizes the customer's beckoning action, he uses the voice to actively ask the customer's needs and communicate with the customer to meet the customer's needs.
 
-​Our innovation is: When the robot recognizes the customer's beckoning action, he uses the voice to actively ask the customer's needs and communicate with the customer to meet the customer's needs.
-
-​I am responsible for the voice part of the robot. What I want to realize is that the robot can communicate with the customer, and recognize the commands which the customer give. He should know the needs of the customer and then execute, and then use the other modules to achieve the overall function.
+I am responsible for the voice part of the robot. What I want to realize is that the robot can communicate with the customer, and recognize the commands which the customer give. He should know the needs of the customer and then execute, and then use the other modules to achieve the overall function.
 
 ## The process of robotic action:
 
 - When the robot recognizes the customer's beckoning action, he would say “Yes, I’m coming.” Then he would navigate to the customer.
 
-​In this section, our group use Baidu API to identify the posture of the customer’s body. When the robot did it, we would publish a message of “Yes, I’m coming.” to the topic `speech` and the robot would say this sentence. And then Then he would navigate to the customer. But the delay of the Baidu API is long, we can only receive the position of the previous second. So, he walked a little shaking. There was an idea that we only use the Baidu API for recognizing the posture of the customer’s body and the use dlib or some other packages to track the customer’s body. But he's still not running smoothly. And now this problem has not been solved well. 
+In this section, our group use Baidu API to identify the posture of the customer’s body. When the robot did it, we would publish a message of “Yes, I’m coming.” to the topic `speech` and the robot would say this sentence. And then Then he would navigate to the customer. But the delay of the Baidu API is long, we can only receive the position of the previous second. So, he walked a little shaking. There was an idea that we only use the Baidu API for recognizing the posture of the customer’s body and the use dlib or some other packages to track the customer’s body. But he's still not running smoothly. And now this problem has not been solved well. 
 
 - When he arrived at the customer, he would ask the customer “Hello! What do you want to drink, coffee or tea?”
 
-​In this section, we will set a suitable distance between the robot and the customer.
+In this section, we will set a suitable distance between the robot and the customer.
 
 - Then the customer would tell his needs to the robot. The robot would recognize the commands which the customer give and then navigate to the bar .
 
@@ -24,7 +26,7 @@
 
 - The next step is that the robot uses his robotic arm to grasp a cup of coffee or tea and navigate back to the start location autonomously.
 
-​In this section, I came up with an idea that we can use PID Controller to adjust the position of the end of the arm to grasp the coffee or tea. And I wrote an algorithm for a PID controller. I want the robot to go to the same position near the bar every time. Then we could use the PID controller to control x, y, z respectively. And what we need to control is the angles (The formula about coordinate and angles is known).But there are a better way to let the robot arm grasp more accurately. The method is that we can use navigation to let the robot be the same distance from the bottle every time and then grasp the bottle.
+In this section, I came up with an idea that we can use PID Controller to adjust the position of the end of the arm to grasp the coffee or tea. And I wrote an algorithm for a PID controller. I want the robot to go to the same position near the bar every time. Then we could use the PID controller to control x, y, z respectively. And what we need to control is the angles (The formula about coordinate and angles is known).But there are a better way to let the robot arm grasp more accurately. The method is that we can use navigation to let the robot be the same distance from the bottle every time and then grasp the bottle.
 
 ```python
 class IncrementalPID:
@@ -61,7 +63,7 @@ class IncrementalPID:
 
 Define a talk function in `main.py`:
 
-```
+```python
 def talk(text):
 pub = rospy.Publisher('speech', String, queue_size=10)
 time.sleep(0.1)
@@ -96,6 +98,7 @@ while not rospy.is_shutdown():
 				rospy.wait_for_message('speak_finish', String)
 	print('finish!')
 ```
+
 Then modify `say.py` :
 
 ```python
@@ -139,15 +142,19 @@ if __name__ == '__main__':
 
 ​     
 
-​First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
+First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
 
-​      `   talk (“Yes, I’m coming.”)`
+```
+  `   talk (“Yes, I’m coming.”)`
+```
 
-​Second, when it receives the message of `finding_finish`, it would execute
+Second, when it receives the message of `finding_finish`, it would execute
 
-​      `talk ("Hello! What would you like to have? Coffee or tea?")`
+```
+  `talk ("Hello! What would you like to have? Coffee or tea?")`
+```
 
-​Third, when it receives the message of `navi_finish`, it would execute
+Third, when it receives the message of `navi_finish`, it would execute
 
 `talk ('Here is your' + drink + '. Enjoy yourself.')`
 
