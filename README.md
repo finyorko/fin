@@ -61,13 +61,40 @@ class IncrementalPID:
 
 Define a talk function in main.py:
 
- 
-
 ```
 def talk(text):
 pub = rospy.Publisher('speech', String, queue_size=10)
 time.sleep(0.1)
 pub.publish(text)  
+```
+
+String Extraction Function:
+
+```python
+while not rospy.is_shutdown():
+		listener()
+		if feed_back!='0':
+			print('success!')
+			print(feed_back)
+			if '咖啡' in feed_back or 'coffee' in feed_back:
+				print('coffee')
+				drink = 'coffee'
+				talk("OK. I'll bring you a cup of coffee")
+				#talk("好的，我去给您拿一杯咖啡")
+				rospy.wait_for_message('speak_finish', String)
+				break
+			elif '茶' in feed_back or 'tea' in feed_back:
+				print('tea')
+				drink = 'tea'
+				talk("OK. I'll bring you a cup of tea")
+				#talk("好的，我去给您拿一杯茶")
+				rospy.wait_for_message('speak_finish', String)
+				break
+			else:
+				talk("I'm not sure I understand.")
+				#talk("我不明白你的意思")
+				rospy.wait_for_message('speak_finish', String)
+	print('finish!')
 ```
 
  Then modify say.py :
@@ -111,7 +138,13 @@ if __name__ == '__main__':
     listener()
 ```
 
-​      First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
+​     
+
+
+
+
+
+​       First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
 
 ​      `   talk (“Yes, I’m coming.”)`
 
