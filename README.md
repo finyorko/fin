@@ -144,19 +144,21 @@ if __name__ == '__main__':
 
 First, when Baidu API recognizes the customer's beckoning action, it will publish a message and then execute 
 
-```
-  `   talk (“Yes, I’m coming.”)`
+```python
+ talk (“Yes, I’m coming.”)`
 ```
 
 Second, when it receives the message of `finding_finish`, it would execute
 
-```
-  `talk ("Hello! What would you like to have? Coffee or tea?")`
+```python
+talk ("Hello! What would you like to have? Coffee or tea?")
 ```
 
 Third, when it receives the message of `navi_finish`, it would execute
 
-`talk ('Here is your' + drink + '. Enjoy yourself.')`
+```python
+talk ('Here is your' + drink + '. Enjoy yourself.')
+```
 
 ## Summary and outlook:
 
