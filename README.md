@@ -163,3 +163,6 @@ talk ('Here is your' + drink + '. Enjoy yourself.')
 ## Summary and outlook:
 
 In this assignment, our final robot has generally met our initial expectations. My task in my group is relatively simple. So, I paid some attention to the visual and mechanical arm parts. I have some thoughts on the robotic arm and the visual aspect, though some of my ideas were replaced by some better ways. But I think that I grew up in this assignment. I understood a lot of knowledge about robots and I recognized many methods. I hope that in the future I can learn more about robots. At last, thank you teacher for your care during this semester. You helped me learn a lot of knowledge about robots. Thank you very much.
+
+##PS
+  Video Path:sample.mp4
